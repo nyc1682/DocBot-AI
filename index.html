@@ -176,13 +176,19 @@
       // Processamento da triagem de sintomas
       function processarTriagemIA(sintoma) {
         const texto = sintoma.toLowerCase();
+
+        if (texto.includes("dor no peito") || texto.includes("falta de ar")) {
+          return "[EMERGÊNCIA VERMELHA] Dirija-se ao pronto-socorro. Valor: R$ 0,00";
+        }
+
         if (
           texto.includes("idoso") ||
           texto.includes("60 anos") ||
           texto.includes("aposentado")
         ) {
+          return "[PRIORIDADE 60+] Atendimento preferencial. Valor com desconto de 30%: R$ 105,00";
         }
-        return "[PRIORIDADE 60+] Atendimento preferencial. Valor com desconto de 30%: R$ 105,00";
+
         return "[TRIAGEM PADRÃO] Encaminhado para consulta geral. Valor: R$ 150,00";
       }
 
