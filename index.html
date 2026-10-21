@@ -177,17 +177,27 @@
         function processarTriagemIA(sintoma) {
     const texto = sintoma.toLowerCase();
 
-    if (
+    if (texto.includes("dor no peito") || texto.includes("falta de ar")) {
+        return "[EMERGÊNCIA VERMELHA] Dirija-se ao pronto-socorro. Valor: R$ 0,00";
+    } else if (
+        texto.includes("idoso") ||
+        texto.includes("60 anos") ||
+        texto.includes("aposentado")
+    ) {
+        return "[PRIORIDADE 60+] Atendimento preferencial. Valor com desconto de 30%: R$ 105,00";
+    } else if (
         texto.includes("plano") ||
         texto.includes("convenio") ||
         texto.includes("convênio") ||
         texto.includes("unimed")
     ) {
         return "[CONVÊNIO ACEITO] Encaminhado para rede credenciada. Copagamento: R$ 35,00";
+    } else if (texto.includes("particular")) {
+        return "[ATENDIMENTO PARTICULAR] Encaminhado para consulta particular. Valor: R$ 150,00";
     }
 
     return "[TRIAGEM PADRÃO] Encaminhado para consulta geral. Valor: R$ 150,00";
-}git
+}
 
       // Interface do chat
       function enviarMensagem() {
